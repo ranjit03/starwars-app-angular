@@ -7,26 +7,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsComponent implements OnInit {
   characters = [
-    {name:'Luke Skywalker', side:''},
-    {name:'Darth Vader', side:''}
+    {name:'Luke Skywalker', side: '' },
+    {name:'Darth Vader', side: '' }
   ];
 chosenList = 'all'
   constructor() { }
 
   ngOnInit() {
   }
+
   onChoose(side){
-    this.chosenList=side;
+    this.chosenList = side;
   }
   getCharacters(){
-    return this.characters.filter((char) => {
-      if (this.chosenList === 'all'){
-        return this.chosenList.slice();
-      }
-      return char.side === this.chosenList;
 
-    })
+      if (this.chosenList === 'all'){
+        return this.characters.slice();
+      }
+      return this.characters.filter((char)=>{
+        return char.side === this.chosenList;
+      })
+
 
   }
+
+  onSideChosen(charInfo){
+    console.log(charInfo)
+    const pos = this.characters.findIndex((char) => {
+      return char.name === charInfo.name
+    })
+    this.characters[pos].side = charInfo.side  }
 
 }
