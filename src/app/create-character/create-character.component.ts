@@ -17,5 +17,8 @@ export class CreateCharacterComponent implements OnInit {
 
   ngOnInit() {
   }
+  onSubmit(SubmittedForm){
+    console.log(SubmittedForm)
+  }
 
 }
