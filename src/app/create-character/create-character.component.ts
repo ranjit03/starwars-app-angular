@@ -1,5 +1,6 @@
 import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { NONE_TYPE } from '@angular/compiler/src/output/output_ast';
+import {StarWarsService} from '../star-wars.service'
 
 @Component({
   selector: 'app-create-character',
@@ -13,14 +14,17 @@ export class CreateCharacterComponent implements OnInit {
     {display: 'Light', value:'light'},
     {display:'Dark', value:'dark'}
   ]
+  swService: StarWarsService
 
-  constructor() { }
+  constructor(swService: StarWarsService) {
+    this.swService = swService;
+   }
 
   ngOnInit() {
   }
   onSubmit(SubmittedForm){
     console.log(SubmittedForm.value.name)
-    this.newCharacter.emit({name:SubmittedForm.value.name, side:SubmittedForm.value.side})
+    this.swService.addCharacter(SubmittedForm.value.name, SubmittedForm.value.side);
   }
 
 }
