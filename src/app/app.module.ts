@@ -9,6 +9,8 @@ import { ListsComponent } from './lists/lists.component';
 import { ItemComponent } from './item/item.component';
 import { CreateCharacterComponent } from './create-character/create-character.component';
 import { HeaderComponent } from './header/header.component';
+import { StarWarsService } from './star-wars.service';
+import { LogService } from './log.service';
 
 const routes = [
   {path:'', component: TabsComponent},
@@ -30,7 +32,7 @@ const routes = [
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [StarWarsService, LogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

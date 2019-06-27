@@ -15,9 +15,10 @@ export class ListsComponent implements OnInit {
   ngOnInit() {
   }
   onSideAssigned(charInfo){
-    console.log("lists", charInfo)
+  
     this.sideAssigned.emit(charInfo)
 
   }
+ 
 
 }

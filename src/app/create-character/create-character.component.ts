@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 import { NONE_TYPE } from '@angular/compiler/src/output/output_ast';
 
 @Component({
@@ -7,6 +7,7 @@ import { NONE_TYPE } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./create-character.component.css']
 })
 export class CreateCharacterComponent implements OnInit {
+  @Output() newCharacter = new EventEmitter <{name:string, side:string}>();
   availableSides = [
     {display: 'none', value: ''},
     {display: 'Light', value:'light'},
@@ -18,7 +19,8 @@ export class CreateCharacterComponent implements OnInit {
   ngOnInit() {
   }
   onSubmit(SubmittedForm){
-    console.log(SubmittedForm)
+    console.log(SubmittedForm.value.name)
+    this.newCharacter.emit({name:SubmittedForm.value.name, side:SubmittedForm.value.side})
   }
 
 }
