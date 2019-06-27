@@ -11,6 +11,8 @@ import { CreateCharacterComponent } from './create-character/create-character.co
 import { HeaderComponent } from './header/header.component';
 import { StarWarsService } from './star-wars.service';
 import { LogService } from './log.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const routes = [
   {path:'', component: TabsComponent},
@@ -30,7 +32,8 @@ const routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [StarWarsService, LogService],
   bootstrap: [AppComponent]
